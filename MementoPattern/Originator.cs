@@ -6,7 +6,6 @@ namespace MementoPattern
     {
         public User User { get; set; }
 
-
         public Memento CreateMemento()
         {
             return new Memento(User);
@@ -16,7 +15,5 @@ namespace MementoPattern
         {
             User = memento.Restore();
         }
-
-
     }
 }

@@ -40,6 +40,10 @@ namespace MementoPattern
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
+            if(string.IsNullOrEmpty(textBoxName.Text) && string.IsNullOrEmpty(textBoxSurname.Text) && string.IsNullOrEmpty(textBoxDescription.Text))
+            {
+                return;
+            }
             originator.User.Name = textBoxName.Text;
             originator.User.Surname = textBoxSurname.Text;
             originator.User.Description = textBoxDescription.Text;
