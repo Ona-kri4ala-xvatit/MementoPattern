@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MementoPattern
@@ -7,7 +8,7 @@ namespace MementoPattern
     {
         private List<Memento> MementoList { get; set; }
 
-        public Caretaker() 
+        public Caretaker()
         {
             MementoList = new List<Memento>();
         }
@@ -19,7 +20,25 @@ namespace MementoPattern
 
         public Memento RestoreMemento(int index)
         {
-            return MementoList[index];
+            return MementoList.ElementAt(index);
+        }
+
+        public string ShowListElement(int current, int index)
+        {
+            if (MementoList.Count == 0 || current == index)
+            {
+                return string.Empty;
+            }
+
+            int last_element_index = current - 1;
+
+            return $"Element to replace : {MementoList.ElementAt(last_element_index)}\n\nReplace this: {MementoList.ElementAt(index)}";
+        }
+
+        public void ReplaceElemenet(int current, int index)
+        {
+            int last_element_index = current - 1;
+            MementoList[index] = MementoList[last_element_index];
         }
     }
 }

@@ -50,7 +50,7 @@
         <Border Grid.Column ="1" Grid.ColumnSpan="3" Background="#1f3d7a"/>
         <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#152951"/>
 
-        <Image Source="C:\Users\nijat_mur\Downloads\16682750762310.png" Stretch="Fill"/>
+        <Image Source="/Resources/img.png" Stretch="Fill"/>
 
         <StackPanel Grid.Column="1" Margin="10,0,10,0" VerticalAlignment="Top">
             <TextBlock Foreground="White" FontSize="25" Text="Name"/>
@@ -59,7 +59,8 @@
             <TextBox x:Name="textBoxSurname" Foreground="#1f3d7a" FontSize="25"/>
         </StackPanel>
 
-        <Button Grid.Column="2" Grid.Row="0" x:Name="buttonCheck" Height="50" Width="auto" VerticalAlignment="Top" Margin="0,0,2,0" Content="🗒️"/>
+        <Button Grid.Column="2" Grid.Row="0" x:Name="buttonShowInfo" Height="50" Width="auto"
+                VerticalAlignment="Top" Margin="0,0,2,0" Content="🗒️" Click="buttonShowInfo_Click"/>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
             <TextBox x:Name="textBoxDescription" Foreground="#1f3d7a" FontSize="25" Margin="20,20,20,0" Height="140" 

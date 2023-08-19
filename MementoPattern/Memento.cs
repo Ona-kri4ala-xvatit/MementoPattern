@@ -1,4 +1,5 @@
 ﻿using MementoPattern.Models;
+using System.Xml.Linq;
 
 namespace MementoPattern
 {
@@ -24,6 +25,11 @@ namespace MementoPattern
                 Description = description
             };
             return user;
+        }
+
+        public override string ToString()
+        {
+            return $"{name} {surname}: {description}\n\n";
         }
     }
 }

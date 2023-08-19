@@ -11,6 +11,7 @@ namespace MementoPattern
         private Memento? memento;
 
         private int index = 0;
+        private int current_index = 0;
 
         public MainWindow()
         {
@@ -35,12 +36,21 @@ namespace MementoPattern
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
+            if (index == current_index - 1)
+            {
+                return;
+            }
 
+            originator.SetMemento(caretaker.RestoreMemento(++index));
+
+            textBoxName.Text = originator.User.Name;
+            textBoxSurname.Text = originator.User.Surname;
+            textBoxDescription.Text = originator.User.Description;
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(textBoxName.Text) && string.IsNullOrEmpty(textBoxSurname.Text) && string.IsNullOrEmpty(textBoxDescription.Text))
+            if (string.IsNullOrEmpty(textBoxName.Text) && string.IsNullOrEmpty(textBoxSurname.Text) && string.IsNullOrEmpty(textBoxDescription.Text))
             {
                 return;
             }
@@ -51,11 +61,25 @@ namespace MementoPattern
             memento = originator.CreateMemento();
             caretaker.SaveMemento(memento);
 
-            index++;
+            current_index = ++index;
 
             textBoxName.Text = string.Empty;
             textBoxSurname.Text = string.Empty;
             textBoxDescription.Text = string.Empty;
+        }
+
+        private void buttonShowInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show(caretaker.ShowListElement(current_index, index), "Replace?", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                caretaker.ReplaceElemenet(current_index, index);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
