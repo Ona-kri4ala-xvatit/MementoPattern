@@ -6,9 +6,9 @@ namespace MementoPattern
 {
     public partial class MainWindow : Window
     {
-        private Originator originator = new Originator();
-        private Caretaker caretaker;
-        private Memento memento;
+        private readonly Originator originator = new Originator();
+        private readonly Caretaker caretaker;
+        private Memento? memento;
 
         private int index = 0;
 

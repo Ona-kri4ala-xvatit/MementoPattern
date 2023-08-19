@@ -14,7 +14,7 @@ namespace MementoPattern
 
         public void SetMemento(Memento memento)
         {
-            User = memento.User;
+            User = memento.Restore();
         }
 
 
